@@ -11,7 +11,7 @@ class Publisher(Base):
     name = sq.Column(sq.String(length=40), unique=True)
 
     def __repr__(self):
-        return f'Издатель: {self.name}'
+        return str(self.name)
 
 
 class Book(Base):
@@ -24,7 +24,7 @@ class Book(Base):
     publishers = relationship(Publisher, backref="books")
 
     def __repr__(self):
-        return f'Книга: {self.title}'
+        return self.title
 
 
 class Shop(Base):
@@ -34,7 +34,7 @@ class Shop(Base):
     name = sq.Column(sq.String, unique=True)
 
     def __repr__(self):
-        return f'Магазин: {self.name}'
+        return self.name
 
 
 class Stock(Base):
@@ -49,7 +49,7 @@ class Stock(Base):
     shops = relationship(Shop, backref='stock')
 
     def __repr__(self):
-        return f'Запас: {self.count}'
+        return str(self.count)
 
 
 class Sale(Base):
